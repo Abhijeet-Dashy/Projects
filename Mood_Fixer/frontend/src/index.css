@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Hatton';
+  src: url('/Hatton/PPHatton-Medium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@layer utilities {
+  .font-Hatton {
+    font-family: 'Hatton', sans-serif;
+  }
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(240, 240, 255, 0.8) 20%,
+      rgba(230, 230, 250, 0.7) 40%,
+      rgba(255, 182, 193, 0.3) 60%,
+      rgba(255, 160, 180, 0.4) 80%,
+      rgba(200, 150, 200, 0.5) 100%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 182, 193, 0.2) 25%,
+      rgba(221, 160, 221, 0.3) 50%,
+      rgba(255, 192, 203, 0.2) 75%,
+      rgba(230, 230, 250, 0.1) 100%
+    );
+  background-size: 100% 100%, 150% 150%;
+  background-position: center, center;
+  animation: subtleShift 15s ease-in-out infinite;
+}
+
+@keyframes subtleShift {
+  0%,
+  100% {
+    background-position: center, center;
+  }
+  50% {
+    background-position: center, 20% 80%;
+  }
+}
+
+/* Alternative simpler version */
+.simple-version {
+  background: radial-gradient(
+    circle at center,
+    #ffffff 0%,
+    #f8f8ff 30%,
+    #e6e6fa 60%,
+    #ffb6c1 85%,
+    #dda0dd 100%
+  );
+}
+
+/* Even more accurate version */
+.accurate-version {
+  background: radial-gradient(
+      ellipse 80% 60% at 50% 40%,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(248, 248, 255, 0.8) 25%,
+      rgba(230, 230, 250, 0.6) 50%,
+      rgba(255, 182, 193, 0.4) 75%,
+      rgba(221, 160, 221, 0.6) 100%
+    ),
+    linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 182, 193, 0.2),
+      rgba(221, 160, 221, 0.3)
+    );
+}
