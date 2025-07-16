@@ -7,8 +7,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const TELEGRAM_BOT_TOKEN = '8128399282:AAETVZlimM7e5px-w_m3GvzhxJ2pgr_qC2k';
-const CHAT_ID = '1664749480'; // Your Telegram chat ID
+import dotenv from 'dotenv';
+dotenv.config();
+
+const botToken = process.env.BOT_TOKEN;
+const chatId = process.env.CHAT_ID;
 
 function getRandomText(mood) {
   const list = moodTexts[mood] || [];
