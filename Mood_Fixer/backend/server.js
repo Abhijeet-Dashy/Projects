@@ -2,16 +2,16 @@ import express from 'express';
 import cors from 'cors';
 import { moodTexts } from './moodData.js';
 import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-import dotenv from 'dotenv';
-dotenv.config();
+const botToken = process.env.TELEGRAM_BOT_TOKEN;
+const chatId = process.env.chat_id;
 
-const botToken = process.env.BOT_TOKEN;
-const chatId = process.env.CHAT_ID;
 
 function getRandomText(mood) {
   const list = moodTexts[mood] || [];
@@ -23,11 +23,10 @@ app.post('/get-text', async (req, res) => {
 
   // Choose response
   const selectedText = getRandomText(mood);
-
   // Notify you on Telegram
   try {
-    await axios.post(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-      chat_id: CHAT_ID,
+    await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      chat_id: chatId,
       text: `Someone selected mood: ${mood}`,
     });
   } catch (err) {
